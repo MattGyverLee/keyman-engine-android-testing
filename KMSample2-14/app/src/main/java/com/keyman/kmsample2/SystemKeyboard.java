@@ -51,8 +51,8 @@ public class SystemKeyboard extends InputMethodService implements OnKeyboardEven
       // Font information of the .ttf font to use in KMSample2 (for example "aava1.ttf").
       // basic_kbdtam99 doesn't include a font. Can set blank "" or KMManager.KMDefault_KeyboardFont
       // KMEA will use the font for the OSK, but the Android device determines the system font used for keyboard output
-      KMManager.KMDefault_KeyboardFont,  // Font for KMSample2
-      KMManager.KMDefault_KeyboardFont); // Font for OSK
+      "AndikaAfr-R.ttf",  // Font for KMSample2
+      "AndikaAfr-R.ttf"); // Font for OSK
     KMManager.addKeyboard(this, kbInfoQ);
 
     Keyboard kbInfoA = new Keyboard(
@@ -69,9 +69,8 @@ public class SystemKeyboard extends InputMethodService implements OnKeyboardEven
             // Font information of the .ttf font to use in KMSample2 (for example "aava1.ttf").
             // basic_kbdtam99 doesn't include a font. Can set blank "" or KMManager.KMDefault_KeyboardFont
             // KMEA will use the font for the OSK, but the Android device determines the system font used for keyboard output
-            "andikaa.ttf",  // Font for KMSample2
-            "andikaa.ttf"
-    ); // Font for OSK
+            "AndikaAfr-R.ttf",  // Font for KMSample2
+            "AndikaAfr-R.ttf"); // Font for OSK
     KMManager.addKeyboard(this, kbInfoA);
 
   }
