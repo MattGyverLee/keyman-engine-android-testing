@@ -1,8 +1,8 @@
 # keman-engine-android-testing
 
 ## Overview
-My Android app was based on KMSample2 and Keyman Engine 11, and I’m doing updates now. I tried newer versions of Keyman Engine, 
-but only Version 11 (with no online updates) fully worked. Secondary Keyboards don’t load properly in many cases below.
+My Android app was based on KMSample2 and Keyman Engine 11, and Iâ€™m doing updates now. I tried newer versions of Keyman Engine, 
+but only Version 11 (with no online updates) fully worked. Secondary Keyboards donâ€™t load properly in many cases below.
 
 This testing procedure will require you to change or comment a couple of lines in the code for each setup:
 
@@ -24,7 +24,7 @@ Comment or Un-comment Line 36 in SystemKeyboard.java
 - Save, Build and Play in the emulator (I tested with Android 27 and 29)
 - Authorize and Enable the KMSample2 keyboard.
 - Close the app.
-- Click on the Google bar to show the primary (Qwerty) keyboard.
+- Click on the Google bar to show the primary (Azerty) keyboard.
 - Click on the Globe to switch to the Qwerty Keyboard.
 - Test this Keyboard if possible.
 
@@ -83,7 +83,7 @@ This seems to show that the issue is not with the Azerty Keyboard, but with the 
 ### Test 8
 Install KMSample-14 app in Android Studio and complete the same tests.
 
-Result: Both keyboards show, swap, and work using KME 14, but I can’t figure out what directory should hold the font.
+Result: Both keyboards show, swap, and work using KME 14, but I canâ€™t figure out what directory should hold the font.
 
 ## Sidenote:
 The version of app/build.gradle that ships with each engine is not readily buildable, as it expects a version.gradle file that doesn't exist in the zip.
