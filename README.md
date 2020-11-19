@@ -1,7 +1,7 @@
 # keman-engine-android-testing
 
 ## Overview
-My Android app was based on KMSample2 and Keyman Engine 11, and I’m doing updates now. I tried newer versions of Keyman Engine, 
+My Android app was based on KMSample2 and Keyman Engine 11, and I’m doing updates now. I tried to update to newer versions of Keyman Engine, 
 but only Version 11 (with no online updates) fully worked. Secondary Keyboards don’t load properly in many cases below.
 
 This is my minimal bug reproduction showing the problems in KMSample2 rather than my actual app.
