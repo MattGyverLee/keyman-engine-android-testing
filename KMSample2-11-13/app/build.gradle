@@ -1,0 +1,38 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        applicationId "com.keyman.kmsample2"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+    google()
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.2.0-alpha02'
+    implementation 'com.google.android.material:material:1.0.0'
+    api (name:'keyman-engine11', ext:'aar')
+    implementation "com.google.firebase:firebase-core:17.2.1"
+    implementation "com.google.firebase:firebase-crash:16.2.1"
+    implementation('com.crashlytics.sdk.android:crashlytics:2.10.1@aar') {
+        transitive = true
+    }
+}

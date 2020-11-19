@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: :keyman-engine13:@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/08e2709989a711f9f7db2c763250b9ef/jetified-keyman-engine/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/08e2709989a711f9f7db2c763250b9ef/jetified-keyman-engine/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/08e2709989a711f9f7db2c763250b9ef/jetified-keyman-engine/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
