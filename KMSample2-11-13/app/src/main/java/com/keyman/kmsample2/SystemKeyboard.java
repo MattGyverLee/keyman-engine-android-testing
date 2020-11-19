@@ -1,6 +1,7 @@
 package com.keyman.kmsample2;
 
 import com.tavultesoft.kmea.KMManager;
+import com.tavultesoft.kmea.KMManager.GlobeKeyAction;
 import com.tavultesoft.kmea.KMManager.KeyboardType;
 import com.tavultesoft.kmea.KMHardwareKeyboardInterpreter;
 import com.tavultesoft.kmea.KeyboardEventHandler.OnKeyboardEventListener;
@@ -35,6 +36,7 @@ public class SystemKeyboard extends InputMethodService implements OnKeyboardEven
     KMManager.addKeyboardEventListener(this);
     KMManager.setShouldCheckKeyboardUpdates(false);
     KMManager.initialize(getApplicationContext(), KeyboardType.KEYBOARD_TYPE_SYSTEM);
+    KMManager.setGlobeKeyAction(KeyboardType.KEYBOARD_TYPE_SYSTEM, GlobeKeyAction.GLOBE_KEY_ACTION_ADVANCE_TO_NEXT_SYSTEM_KEYBOARD);
     interpreter = new KMHardwareKeyboardInterpreter(getApplicationContext(), KeyboardType.KEYBOARD_TYPE_SYSTEM);
 
     // Add a custom keyboard
