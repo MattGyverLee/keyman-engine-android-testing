@@ -6,87 +6,18 @@ but only Version 11 (with no online updates) fully worked. Secondary Keyboards d
 
 This is my minimal bug reproduction showing the problems in KMSample2 rather than my more-complex app. I have seen errors logged about "no keyboard stubs", but I'm not sure how to fix that.
 
-This testing procedure will require you to change or comment a couple of lines in the code for each setup:
+## This setup is to test Globe options
 
-Change line 32 in app/build.gradle to switch between the various versions of the KM Android engine.
-- api `(name:'keyman-engine11', ext:'aar')`
-- api `(name:'keyman-engine12', ext:'aar')`
-- api `(name:'keyman-engine13', ext:'aar')`
+I have 2 KM keyboards in a custom android app, and the user will have other input methods. I know that I can set the Globe Key action to several values (open menu, next KM keyboard, next input method, etc.)
 
-Comment or Un-comment Line 36 in SystemKeyboard.java
-- `KMManager.setShouldCheckKeyboardUpdates(false);`
-- `// KMManager.setShouldCheckKeyboardUpdates(false);`
+In both KM engine 13 and 14, I can use:
+GLOBE_KEY_ACTION_SHOW_MENU , GLOBE_KEY_ACTION_SWITCH_TO_NEXT_KEYBOARD , or GLOBE_KEY_ACTION_DO_NOTHING
 
-## Main Testing process for each case:
-- Open the app in Android Studio (if not already open).
-- Wipe the AVD's memory to insure no contamination.
-- On line 32 of app/build.gradle, set the engine as directed in the test.
-- Comment or un-comment the update line 36 of SystemKeyboard.java as directed.
-- File>Sync Project with Gradle Files (to make sure it's using the new engine)
-- Save, Build and Play in the emulator (I tested with Android 27 and 29)
-- Authorize and Enable the KMSample2 keyboard.
-- Close the app.
-- Click on the Google bar to show the primary (Azerty) keyboard.
-- Click on the Globe to switch to the Qwerty Keyboard.
-- Test this Keyboard if possible.
+In KMEngine 14 (see project KMSample2-14): the fourth option works well:
+GLOBE_KEY_ACTION_ADVANCE_TO_NEXT_SYSTEM_KEYBOARD
 
+In KMEngine 13 (see project KMSample2-11-13) when using GLOBE_KEY_ACTION_ADVANCE_TO_NEXT_SYSTEM_KEYBOARD, it still opens the menu, even though it has been instructed to switch to the next IME. The variable does get set, but it seems to ignore it.
 
-## KMSample-11-13 Project (Hashmap versions)
+In my “real” app, the user has an option to choose the keyboard, and any one user is unlikely to need both, so a simple next Input Method may be sufficient. Can you help me figure out why GLOBE_KEY_ACTION_ADVANCE_TO_NEXT_SYSTEM_KEYBOARD doesn’t work in KME 13 (KMSample2-11-13) or earlier. If it’s my mistake, great! If it is a bug, I guess you’ll have to decide whether to backport it to stable 13. I’m leaning toward submitting my next app version with 14 anyway, since everything I want works there now.
 
-### Test Case 1 - KME 11.0.2107, No Updates
-- `api (name:'keyman-engine11', ext:'aar')`
-- `KMManager.setShouldCheckKeyboardUpdates(false);`
-
-Result: Works as Expected
-
-### Test Case 2 - KME 11.0.2107, Updates
-- `api (name:'keyman-engine11', ext:'aar')`
-- `// KMManager.setShouldCheckKeyboardUpdates(false);`
-
-Result: Qwerty works ONLY after Keyman checks the internet and fails. Why does it fail?
-
-### Test Case 3 - KME 12.0.4215, No Updates
-- `api (name:'keyman-engine12', ext:'aar')`
-- `KMManager.setShouldCheckKeyboardUpdates(false);`
-
-Result: Qwerty fails to load. Reverts to Primary keyboard.
-
-### Test Case 4 - KME 12.0.4215, Updates
-- `api (name:'keyman-engine12', ext:'aar')`
-- `// KMManager.setShouldCheckKeyboardUpdates(false);`
-
-Result: Qwerty fails to load. Reverts to Primary keyboard.
-
-### Test Case 5 - KME 13.0.6060, No Updates
-- `api (name:'keyman-engine13', ext:'aar')`
-- `KMManager.setShouldCheckKeyboardUpdates(false);`
-
-Result: Qwerty fails to load. Reverts to Primary keyboard.
-
-### Test Case 6 - KME 13.0.6060, Updates
-- `api (name:'keyman-engine13', ext:'aar')`
-- `// KMManager.setShouldCheckKeyboardUpdates(false);`
-
-Result: Qwerty fails to load. Reverts to Primary keyboard.
-
-### Test Case 7 - Swap Primary Keyboard.
-Go to line 179 of SystemKeyboard.java and replace
-`int kbIndex = KMManager.getKeyboardIndex(this, "sil_cameroon_azerty", "ewo");`
-with
-`int kbIndex = KMManager.getKeyboardIndex(this, "sil_cameroon_qwerty", "ewo");`
-
-Repeat testing.
-
-Result: The Qwerty loads properly, but the non-primary keyboard (Azerty) won't load.
-This seems to show that the issue is not with the Azerty Keyboard, but with the switching to any secondary.
- 
-## Project KMSample-14 with the new Keyboard Object.
-
-### Test 8
-Install KMSample-14 app in Android Studio and complete the same tests.
-
-Result: Both keyboards show, swap, and work using KME 14, but I can’t figure out what directory should hold the font.
-
-## Sidenote:
-The version of app/build.gradle that ships with each engine is not readily buildable, as it expects a version.gradle file that doesn't exist in the zip.
-One must set a version name, number, and several other variables manually to be able to build.
+Eventually, if the user selects both KM keyboards, I may want the first KM keyboard’s globe to switch KM keyboards, and the second’s globe to switch Input methods. I have an idea how I would set up this in the KMmanager lifecycle.
