@@ -29,10 +29,12 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.2.0-alpha02'
     implementation 'com.google.android.material:material:1.0.0'
-    api (name:'keyman-engine11', ext:'aar')
-    implementation "com.google.firebase:firebase-core:17.2.1"
+    api (name:'keyman-engine13', ext:'aar')
+    implementation "com.google.firebase:firebase-core:18.0.0"
     implementation "com.google.firebase:firebase-crash:16.2.1"
+    /*
     implementation('com.crashlytics.sdk.android:crashlytics:2.10.1@aar') {
         transitive = true
     }
+    */
 }
