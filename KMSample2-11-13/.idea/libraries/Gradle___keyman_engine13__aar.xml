@@ -4,6 +4,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/08e2709989a711f9f7db2c763250b9ef/jetified-keyman-engine/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/08e2709989a711f9f7db2c763250b9ef/jetified-keyman-engine/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/08e2709989a711f9f7db2c763250b9ef/jetified-keyman-engine/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5314b87bca4727d344a55d9d620754d6/jetified-keyman-engine13/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5314b87bca4727d344a55d9d620754d6/jetified-keyman-engine13/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5314b87bca4727d344a55d9d620754d6/jetified-keyman-engine13/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

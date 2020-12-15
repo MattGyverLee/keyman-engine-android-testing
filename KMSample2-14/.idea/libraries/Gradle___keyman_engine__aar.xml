@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: :keyman-engine:@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f8d280e8d146074704816cf42a340f36/jetified-keyman-engine/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f8d280e8d146074704816cf42a340f36/jetified-keyman-engine/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f8d280e8d146074704816cf42a340f36/jetified-keyman-engine/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/66146af9cf333369f9bcff3a07eb8c5d/jetified-keyman-engine/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/66146af9cf333369f9bcff3a07eb8c5d/jetified-keyman-engine/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/66146af9cf333369f9bcff3a07eb8c5d/jetified-keyman-engine/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

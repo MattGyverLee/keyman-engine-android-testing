@@ -2,7 +2,6 @@ package com.keyman.kmsample2;
 
 import com.tavultesoft.kmea.data.Keyboard;
 import com.tavultesoft.kmea.KMManager;
-import com.tavultesoft.kmea.KMManager.GlobeKeyAction;
 import com.tavultesoft.kmea.KMManager.KeyboardType;
 import com.tavultesoft.kmea.KMHardwareKeyboardInterpreter;
 import com.tavultesoft.kmea.KeyboardEventHandler.OnKeyboardEventListener;
@@ -11,6 +10,8 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Point;
 import android.inputmethodservice.InputMethodService;
+import java.util.HashMap;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,10 +33,10 @@ public class SystemKeyboard extends InputMethodService implements OnKeyboardEven
   @Override
   public void onCreate() {
     super.onCreate();
-    KMManager.setDebugMode(true);
+    KMManager.setDebugMode(true); // *** TO DO: Disable/delete before publishing a new release ***
     KMManager.addKeyboardEventListener(this);
     KMManager.initialize(getApplicationContext(), KeyboardType.KEYBOARD_TYPE_SYSTEM);
-    KMManager.setGlobeKeyAction(KeyboardType.KEYBOARD_TYPE_SYSTEM, GlobeKeyAction.GLOBE_KEY_ACTION_ADVANCE_TO_NEXT_SYSTEM_KEYBOARD);
+    KMManager.setGlobeKeyAction(KeyboardType.KEYBOARD_TYPE_SYSTEM, KMManager.GlobeKeyAction.GLOBE_KEY_ACTION_ADVANCE_TO_NEXT_SYSTEM_KEYBOARD);
     interpreter = new KMHardwareKeyboardInterpreter(getApplicationContext(), KeyboardType.KEYBOARD_TYPE_SYSTEM);
 
     // Add a custom keyboard
@@ -45,7 +46,7 @@ public class SystemKeyboard extends InputMethodService implements OnKeyboardEven
       "Cameroon Qwerty", // Keyboard Name
       "ewo",             // Language ID
       "Ewondo",          // Language Name
-      "6.0.4",            // Keyboard Version
+      "6.0.5",            // Keyboard Version
       "https://help.keyman.com/keyboard/sil_cameroon_qwerty/",             // URL to help documentation if available
       "https://keyman.com/keyboard/download?id=sil_cameroon_qwerty&platform=android&mode=standalone",               // URL to latest .kmp file
       true,             // Boolean to show this is a new keyboard in the keyboard picker
@@ -63,7 +64,7 @@ public class SystemKeyboard extends InputMethodService implements OnKeyboardEven
             "Cameroon Azerty", // Keyboard Name
             "ewo",             // Language ID
             "Ewondo",          // Language Name
-            "6.0.2",            // Keyboard Version
+            "6.0.3",            // Keyboard Version
             "https://help.keyman.com/keyboard/sil_cameroon_azerty/",             // URL to help documentation if available
             "https://keyman.com/keyboard/download?id=sil_cameroon_azerty&platform=android&mode=standalone",               // URL to latest .kmp file
             true,             // Boolean to show this is a new keyboard in the keyboard picker
@@ -74,6 +75,7 @@ public class SystemKeyboard extends InputMethodService implements OnKeyboardEven
             "AndikaAfr-R.ttf",  // Font for KMSample2
             "AndikaAfr-R.ttf"); // Font for OSK
     KMManager.addKeyboard(this, kbInfoA);
+
 
   }
 
@@ -192,8 +194,8 @@ public class SystemKeyboard extends InputMethodService implements OnKeyboardEven
   public void onKeyboardLoaded(KeyboardType keyboardType) {
     // Handle Keyman keyboard loaded event here if needed
     // We can set our custom keyboard here
-    // int kbIndex = KMManager.getKeyboardIndex(this, "sil_cameroon_qwerty", "ewo");
-    // KMManager.setKeyboard(this, kbIndex);
+    int kbIndex = KMManager.getKeyboardIndex(this, "sil_cameroon_qwerty", "ewo");
+    KMManager.setKeyboard(this, kbIndex);
   }
 
   @Override
